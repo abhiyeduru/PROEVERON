@@ -60,7 +60,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="relative">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-500 to-yellow-700 flex items-center justify-center font-cinzel font-bold text-navy text-sm shadow-lg">P</div>
+              <img src="/logo.png" alt="PROEVERON" className="w-10 h-10 rounded-lg shadow-lg" />
               <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-yellow-400 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity blur-sm -z-10"></div>
             </div>
             <div>
