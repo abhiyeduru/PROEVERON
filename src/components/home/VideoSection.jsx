@@ -3,14 +3,12 @@ import { motion } from 'framer-motion';
 import { useContent } from '../../context/ContentContext';
 import { SectionContainer } from '../layout/PageLayout';
 
-const DUMMY_YOUTUBE_ID = 'dQw4w9WgXcQ';
-
 export default function VideoSection() {
   const { content } = useContent();
   const videoSection = content?.videoSection || {};
   const [showModal, setShowModal] = useState(false);
 
-  const youtubeId = videoSection.youtubeVideoId || DUMMY_YOUTUBE_ID;
+  const videoUrl = videoSection.videoUrl || '/promo-video.mp4';
 
   return (
     <>
@@ -27,13 +25,9 @@ export default function VideoSection() {
             {/* Video Thumbnail */}
             <div className="relative w-full rounded-2xl overflow-hidden border border-yellow-500/20 group-hover:border-yellow-500/40 transition-all duration-300">
               <div className="aspect-video relative bg-black">
-                <img
-                  src={`https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`}
-                  alt="Video"
+                <video
+                  src={videoUrl}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => {
-                    e.target.src = `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
-                  }}
                 />
                 
                 {/* Overlay */}
@@ -74,14 +68,11 @@ export default function VideoSection() {
           >
             <div className="relative w-full rounded-2xl overflow-hidden">
               <div className="aspect-video">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`}
-                  title="PROEVERON"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
+                <video
+                  src={videoUrl}
+                  controls
+                  autoPlay
+                  className="w-full h-full"
                 />
               </div>
             </div>
