@@ -67,14 +67,14 @@ export default function HeroSection() {
             </h1>
           </motion.div>
 
-          {/* Subtitle */}
-          <motion.p variants={itemVariants} className="text-lg md:text-xl text-white/70 font-poppins">
-            Global Investment Ecosystem
-          </motion.p>
-
           {/* Description */}
           <motion.p variants={itemVariants} className="text-base text-white/60 leading-relaxed max-w-xl font-poppins">
-            PROEVERON connects visionary investors with premium real estate opportunities across India, UAE, and USA — delivering world-class returns with transparency and trust.
+            PROEVERON connects investors to high-growth real estate across India, UAE & USA — combining asset ownership with equity-style returns, backed by structured models and transparent execution.
+          </motion.p>
+
+          {/* Tagline */}
+          <motion.p variants={itemVariants} className="text-lg md:text-xl text-yellow-400 font-poppins font-semibold">
+            Not just buying land — building income-generating assets.
           </motion.p>
 
           {/* CTAs */}
