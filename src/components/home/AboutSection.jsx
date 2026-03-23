@@ -34,7 +34,7 @@ export default function AboutSection() {
             <div>
               <span className="text-yellow-400 text-xs font-semibold tracking-wider">ABOUT PROEVERON</span>
               <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mt-3 mb-3 leading-tight">
-                A Global Real Estate Powerhouse
+                Structured Real Estate Investments with Predictable Returns
               </h2>
             </div>
 

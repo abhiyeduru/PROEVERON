@@ -16,7 +16,7 @@ export const DEFAULT_CONTENT = {
     ctaSecondary: 'Invest Now',
   },
   about: {
-    title: 'A Global Real Estate Powerhouse',
+    title: 'Structured Real Estate Investments with Predictable Returns',
     subtitle: 'Built on Trust, Driven by Vision',
     description: 'PROEVERON connects investors to high-growth real estate across India, UAE & USA — combining asset ownership with equity-style returns, backed by structured models and transparent execution.',
     stats: [
