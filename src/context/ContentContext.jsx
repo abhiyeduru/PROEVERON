@@ -18,7 +18,7 @@ export const DEFAULT_CONTENT = {
   about: {
     title: 'A Global Real Estate Powerhouse',
     subtitle: 'Built on Trust, Driven by Vision',
-    description: 'PROEVERON is a next-generation real estate investment ecosystem, combining the precision of fintech with the prestige of luxury property. With a presence in India, USA, and UAE, we are redefining how people build wealth through property.',
+    description: 'PROEVERON connects investors to high-growth real estate across India, UAE & USA — combining asset ownership with equity-style returns, backed by structured models and transparent execution.',
     stats: [
       { label: 'Crores Invested', value: '500+' },
       { label: 'Happy Investors', value: '2000+' },
