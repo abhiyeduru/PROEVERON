@@ -39,7 +39,7 @@ export default function AboutSection() {
             </div>
 
             <p className="text-white/70 text-base leading-relaxed font-poppins">
-              {about.description || 'PROEVERON is a next-generation real estate investment ecosystem, combining the precision of fintech with the prestige of luxury property. With a presence in India, USA, and UAE, we are redefining how people build wealth through property.'}
+              {about.description || 'PROEVERON connects investors to high-growth real estate across India, UAE & USA — combining asset ownership with equity-style returns, backed by structured models and transparent execution.'}
             </p>
 
             {/* Stats Grid */}
