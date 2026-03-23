@@ -83,28 +83,29 @@ export default function HeroSection() {
               to="/projects"
               className="px-6 py-3 bg-yellow-500 text-[#0B1C3D] font-semibold rounded-lg hover:bg-yellow-600 transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto text-sm"
             >
-              Explore Projects <ArrowRight size={18} />
+              View Live Opportunities <ArrowRight size={18} />
             </Link>
             <Link
               to="/register"
               className="px-6 py-3 border border-yellow-500 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-500/10 transition-all duration-300 w-full sm:w-auto text-center text-sm"
             >
-              Invest Now
+              Start Investing Today
             </Link>
           </motion.div>
 
           {/* Stats */}
-          <motion.div variants={itemVariants} className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
-            {[
-              { value: '₹500Cr+', label: 'Invested' },
-              { value: '2000+', label: 'Investors' },
-              { value: '45+', label: 'Projects' },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div className="text-2xl font-poppins font-bold text-yellow-400">{stat.value}</div>
-                <div className="text-xs text-white/50 mt-1 font-poppins">{stat.label}</div>
-              </div>
-            ))}
+          <motion.div variants={itemVariants} className="pt-8 border-t border-white/10">
+            <div className="text-sm text-white/60 font-poppins mb-3">Across managed & partnered projects</div>
+            <div className="grid grid-cols-2 gap-6">
+              {[
+                { value: '500+', label: '' },
+                { value: '45+', label: '' },
+              ].map((stat, idx) => (
+                <div key={idx}>
+                  <div className="text-3xl font-poppins font-bold text-yellow-400">{stat.value}</div>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       </div>
