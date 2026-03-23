@@ -45,7 +45,7 @@ export default function EcosystemSection() {
         >
           <span className="text-yellow-400 text-sm font-bold tracking-widest">OUR ECOSYSTEM</span>
           <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-white mt-4 mb-6 leading-tight">
-            One Platform. <span className="text-yellow-400">Four Powerhouses.</span>
+            One Platform. <span className="text-yellow-400">Four Investment Engines.</span>
           </h2>
           <p className="text-white/60 max-w-2xl mx-auto text-lg">
             A fully integrated ecosystem designed to maximize your real estate wealth across every investment angle.
