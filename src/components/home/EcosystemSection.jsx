@@ -10,23 +10,27 @@ export default function EcosystemSection() {
 
   const defaultItems = [
     {
-      title: 'PROEVERON Realty',
-      desc: 'Premium residential & commercial projects across tier-1 cities with world-class amenities.',
+      title: 'PROEVERON REALTY',
+      desc: 'Institutional-grade residential & commercial developments in high-growth markets. Focused on land acquisition, development, and value creation in prime corridors.',
+      cta: 'Explore Projects →',
       icon: '🏙️',
     },
     {
-      title: 'RealQuity',
-      desc: 'Fractional ownership — invest in luxury properties from ₹20 Lakhs and earn like an equity holder.',
+      title: 'REALQUITY',
+      desc: 'Fractional ownership for premium real estate — starting from ₹20 Lakhs. Access high-value assets with lower entry, structured returns, and shared ownership.',
+      cta: 'View Opportunities →',
       icon: '📈',
     },
     {
-      title: 'Axel Wellness',
-      desc: 'Wellness-integrated living spaces redefining modern lifestyle with nature and technology.',
+      title: 'AXEL WELLNESS',
+      desc: 'Wellness-driven real estate designed for modern lifestyle and long-term value. Integrating nature, health, and living spaces to enhance both experience and asset appreciation.',
+      cta: 'Discover Concept →',
       icon: '🌿',
     },
     {
-      title: 'TeQZen AI',
-      desc: 'AI-powered property analytics and smart investment insights for data-driven decisions.',
+      title: 'TEQZEN',
+      desc: 'AI-powered analytics for smarter real estate investment decisions. Data-driven insights, risk analysis, and opportunity tracking across markets.',
+      cta: 'See Insights →',
       icon: '🤖',
     },
   ];
@@ -48,12 +52,12 @@ export default function EcosystemSection() {
             One Platform. <span className="text-yellow-400">Four Investment Engines.</span>
           </h2>
           <p className="text-white/60 max-w-2xl mx-auto text-lg">
-            A fully integrated ecosystem designed to maximize your real estate wealth across every investment angle.
+            An integrated ecosystem designed to create, grow, and multiply real estate wealth — across ownership, income, and innovation.
           </p>
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {items.map((item, i) => (
             <motion.div
               key={i}
@@ -63,16 +67,28 @@ export default function EcosystemSection() {
               className="group bg-white/5 border border-yellow-500/20 rounded-xl p-6 hover:border-yellow-500/60 hover:bg-white/10 transition-all duration-300 cursor-pointer h-full flex flex-col"
             >
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
-              <h3 className="text-lg font-cinzel font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">
+              <h3 className="text-lg font-poppins font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">
                 {item.title}
               </h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-4 flex-grow">{item.desc}</p>
-              <div className="flex items-center gap-2 text-yellow-400/60 group-hover:text-yellow-400 transition-colors text-sm font-medium">
-                Learn More <ArrowRight size={14} />
+              <p className="text-white/60 text-sm leading-relaxed mb-4 flex-grow font-poppins">{item.desc}</p>
+              <div className="flex items-center gap-2 text-yellow-400/60 group-hover:text-yellow-400 transition-colors text-sm font-medium font-poppins">
+                {item.cta || 'Learn More →'}
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Closing Statement */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center"
+        >
+          <p className="text-white/70 text-lg font-poppins max-w-2xl mx-auto">
+            Together, these four verticals transform real estate from a static asset into a dynamic wealth-building system.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
