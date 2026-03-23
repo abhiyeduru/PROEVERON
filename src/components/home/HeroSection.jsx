@@ -51,13 +51,6 @@ export default function HeroSection() {
           animate="visible"
           className="max-w-2xl space-y-6"
         >
-          {/* Badge */}
-          <motion.div variants={itemVariants} className="inline-block">
-            <span className="px-3 py-1.5 rounded-full bg-yellow-500/15 border border-yellow-500/30 text-yellow-400 text-xs font-medium tracking-wider">
-              GLOBAL REAL ESTATE INVESTMENT
-            </span>
-          </motion.div>
-
           {/* Main Heading */}
           <motion.div variants={itemVariants}>
             <h1 className="text-5xl md:text-6xl lg:text-6xl font-poppins font-bold text-white leading-tight">
