@@ -1,10 +1,12 @@
 // src/pages/admin/AdminProjects.jsx
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { db, storage } from '../../firebase/config';
+import { db } from '../../firebase/config';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Plus, Edit2, Trash2, X, Upload, Building2 } from 'lucide-react';
+
+const CLOUDINARY_UPLOAD_PRESET = 'proeveron_projects'; // Replace with your upload preset
+const CLOUDINARY_CLOUD_NAME = 'your_cloud_name'; // Replace with your Cloudinary cloud name
 
 const EMPTY_FORM = { title: '', location: '', price: '', roi: '', type: 'Residential', status: 'Active', tag: '', description: '', beds: '', area: '', image: '' };
 
@@ -40,12 +42,23 @@ export default function AdminProjects() {
     if (!file) return;
     setUploading(true);
     try {
-      const storageRef = ref(storage, `projects/${Date.now()}_${file.name}`);
-      await uploadBytes(storageRef, file);
-      const url = await getDownloadURL(storageRef);
-      setForm((prev) => ({ ...prev, image: url }));
-    } catch {
-      alert('Image upload failed. Check Firebase Storage rules.');
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+      
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+        method: 'POST',
+        body: formData,
+      });
+      
+      const data = await response.json();
+      if (data.secure_url) {
+        setForm((prev) => ({ ...prev, image: data.secure_url }));
+      } else {
+        alert('Image upload failed. Check your Cloudinary credentials.');
+      }
+    } catch (err) {
+      alert('Image upload failed: ' + err.message);
     } finally {
       setUploading(false);
     }
