@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Phone, MessageCircle, Download, ArrowRight } from 'lucide-react';
 import { useContent } from '../../context/ContentContext';
+import { openWhatsApp } from '../../utils/whatsapp';
 
 function LeadForm() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', budget: '' });
@@ -79,8 +80,6 @@ export default function CTASection() {
   const cta = content?.cta || {};
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
-  const whatsappLink = `https://wa.me/${(cta.whatsapp || '+919876543210').replace(/\D/g, '')}?text=Hi%20PROEVERON%2C%20I%27m%20interested%20in%20investing.`;
-
   return (
     <section ref={ref} className="section-pad bg-gradient-to-r from-[#0B1C3D] via-[#070f22] to-[#0B1C3D]">
       <div className="container-max">
@@ -109,19 +108,17 @@ export default function CTASection() {
           className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
         >
           <a
-            href={`tel:${cta.phone || '+919876543210'}`}
+            href={`tel:${cta.phone || '+919063272652'}`}
             className="px-6 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-[#0B1C3D] font-bold rounded-lg hover:shadow-lg hover:shadow-yellow-500/50 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             <Phone size={18} /> Book a Call
           </a>
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => openWhatsApp('Hi PROEVERON, I\'m interested in investing.')}
             className="px-6 py-3 bg-green-500/90 text-white font-bold rounded-lg hover:bg-green-400 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             <MessageCircle size={18} /> WhatsApp Us
-          </a>
+          </button>
           <button className="px-6 py-3 border-2 border-yellow-500 text-yellow-400 font-bold rounded-lg hover:bg-yellow-500/10 transition-all flex items-center justify-center gap-2 w-full sm:w-auto">
             <Download size={18} /> Download Brochure
           </button>

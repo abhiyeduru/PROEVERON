@@ -2,18 +2,14 @@
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import { useContent } from '../../context/ContentContext';
+import { openWhatsApp } from '../../utils/whatsapp';
 
 export default function WhatsAppButton() {
   const { content } = useContent();
-  const number = content?.cta?.whatsapp || '+919876543210';
-  const clean = number.replace(/\D/g, '');
-  const url = `https://wa.me/${clean}?text=Hi%20PROEVERON%2C%20I%27m%20interested%20in%20investing.%20Please%20share%20more%20details.`;
 
   return (
-    <motion.a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.button
+      onClick={() => openWhatsApp('Hi PROEVERON, I\'m interested in investing. Please share more details.')}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 2, type: 'spring', stiffness: 200 }}
@@ -23,6 +19,6 @@ export default function WhatsAppButton() {
       title="Chat on WhatsApp"
     >
       <MessageCircle size={26} className="text-white" fill="white" />
-    </motion.a>
+    </motion.button>
   );
 }

@@ -1,11 +1,11 @@
-// src/pages/RealEquityPage.jsx
+// src/pages/ProeveronRealtyPage.jsx
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, TrendingUp, Lock, Users, Zap, MapPin, DollarSign, Clock, MessageCircle } from 'lucide-react';
+import { ArrowRight, Building2, MapPin, TrendingUp, Users, CheckCircle, MessageCircle, Home, Zap } from 'lucide-react';
 import { openWhatsApp } from '../utils/whatsapp';
 
-export default function RealEquityPage() {
+export default function ProeveronRealtyPage() {
   const { ref: ref1, inView: inView1 } = useInView({ triggerOnce: true, threshold: 0.2 });
   const { ref: ref2, inView: inView2 } = useInView({ triggerOnce: true, threshold: 0.2 });
   const { ref: ref3, inView: inView3 } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -15,53 +15,48 @@ export default function RealEquityPage() {
   const { ref: ref7, inView: inView7 } = useInView({ triggerOnce: true, threshold: 0.2 });
   const { ref: ref8, inView: inView8 } = useInView({ triggerOnce: true, threshold: 0.2 });
 
-  const opportunities = [
+  const projects = [
     {
       name: 'Urban Village Villas',
       location: 'Shankarpally, Hyderabad',
-      minInvestment: '₹8L',
-      return: '12–18%',
-      period: '12–24 Months',
+      type: 'Residential',
+      units: '150+ Units',
+      price: '₹8L - ₹25L',
+      status: 'Active',
       progress: 65,
     },
     {
       name: 'Premium Residences',
       location: 'Gachibowli, Hyderabad',
-      minInvestment: '₹10L',
-      return: '15–20%',
-      period: '18–30 Months',
+      type: 'Luxury Apartments',
+      units: '200+ Units',
+      price: '₹15L - ₹50L',
+      status: 'Active',
       progress: 45,
     },
     {
-      name: 'Luxury Apartments',
-      location: 'Downtown Dubai',
-      minInvestment: '₹15L',
-      return: '18–24%',
-      period: '24–36 Months',
+      name: 'Downtown Dubai',
+      location: 'Dubai, UAE',
+      type: 'Commercial',
+      units: '100+ Units',
+      price: '₹20L - ₹75L',
+      status: 'Coming Soon',
       progress: 30,
     },
   ];
 
+  const features = [
+    { icon: '🏗️', title: 'Prime Locations', desc: 'High-growth markets across India, UAE & USA' },
+    { icon: '📊', title: 'Value Creation', desc: 'Strategic land acquisition & development' },
+    { icon: '🏢', title: 'Institutional Grade', desc: 'Professional execution & transparency' },
+    { icon: '🌍', title: 'Global Reach', desc: 'International investment opportunities' },
+  ];
+
   const steps = [
-    { num: 1, title: 'Select Opportunity', icon: CheckCircle },
-    { num: 2, title: 'Invest Securely', icon: Lock },
-    { num: 3, title: 'Earn Returns', icon: TrendingUp },
-    { num: 4, title: 'Exit / Reinvest', icon: ArrowRight },
-  ];
-
-  const whyProeveron = [
-    { title: '30+ Years Experience', desc: 'Proven track record in real estate execution' },
-    { title: 'Land-Backed Investments', desc: 'Every project backed by tangible assets' },
-    { title: 'Structured Exit Models', desc: 'Clear buyback and exit strategies' },
-    { title: 'Investor-First Approach', desc: 'Your interests come first, always' },
-  ];
-
-  const faqs = [
-    { q: 'Is this safe?', a: 'Yes. All investments are RERA registered, legally documented, and backed by physical assets.' },
-    { q: 'What is minimum investment?', a: 'Minimum entry is ₹8 Lakhs. We offer flexible payment plans.' },
-    { q: 'How do I exit?', a: 'Defined exit strategy with buyback guarantee or secondary market options.' },
-    { q: 'Is it legally registered?', a: 'All projects are RERA approved with transparent documentation.' },
-    { q: 'Can NRIs invest?', a: 'Yes. NRIs can invest with simplified KYC process.' },
+    { num: 1, title: 'Browse Projects', icon: Building2 },
+    { num: 2, title: 'Select Property', icon: Home },
+    { num: 3, title: 'Secure Investment', icon: CheckCircle },
+    { num: 4, title: 'Track Growth', icon: TrendingUp },
   ];
 
   return (
@@ -80,21 +75,14 @@ export default function RealEquityPage() {
             className="max-w-3xl mx-auto text-center space-y-8"
           >
             <h1 className="text-6xl md:text-7xl font-poppins font-bold text-white leading-tight">
-              RealEquity
+              PROEVERON Realty
             </h1>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-yellow-400">
-              Own Real Estate. Earn Real Returns.
+              Institutional-Grade Real Estate Development
             </h2>
             <p className="text-xl text-white/70 font-poppins max-w-2xl mx-auto">
-              Curated real estate opportunities with clear entry, steady income, and defined exit strategy.
+              Premium residential & commercial developments in high-growth markets. Focused on land acquisition, development, and value creation in prime corridors.
             </p>
-
-            {/* Trust line */}
-            <div className="flex items-center justify-center gap-6 text-sm text-white/60 font-poppins py-6 border-y border-white/10">
-              <span className="flex items-center gap-2"><Lock size={14} /> Asset-backed</span>
-              <span className="flex items-center gap-2"><CheckCircle size={14} /> Transparent</span>
-              <span className="flex items-center gap-2"><Users size={14} /> Professionally Managed</span>
-            </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
@@ -105,7 +93,7 @@ export default function RealEquityPage() {
                 Explore Opportunities <ArrowRight size={20} />
               </Link>
               <button
-                onClick={() => openWhatsApp('Hi PROEVERON, I want to book a call for RealEquity')}
+                onClick={() => openWhatsApp('Hi PROEVERON, I want to know more about PROEVERON Realty projects')}
                 className="px-8 py-4 border border-yellow-500 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-500/10 transition-all duration-300 flex items-center justify-center gap-2 text-base"
               >
                 <MessageCircle size={20} /> Book a Call
@@ -115,7 +103,7 @@ export default function RealEquityPage() {
         </div>
       </section>
 
-      {/* 2. WHAT IS REALEQUITY */}
+      {/* 2. WHAT IS PROEVERON REALTY */}
       <section ref={ref1} className="section-pad bg-[#0B1C3D]">
         <div className="container-max">
           <motion.div
@@ -124,16 +112,12 @@ export default function RealEquityPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mb-4">What is RealEquity?</h2>
-            <p className="text-white/60 text-lg font-poppins">Designed for investors who want clarity, not confusion.</p>
+            <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mb-4">What is PROEVERON Realty?</h2>
+            <p className="text-white/60 text-lg font-poppins">Building premium developments across global markets</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: '🏢', title: 'Access Premium Projects', desc: 'Curated real estate opportunities in high-growth markets' },
-              { icon: '📊', title: 'Invest with Structured Returns', desc: 'Clear ROI targets and transparent return mechanisms' },
-              { icon: '🔁', title: 'Exit with Defined Strategy', desc: 'Buyback guarantees and secondary market options' },
-            ].map((item, i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -141,16 +125,16 @@ export default function RealEquityPage() {
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className="bg-white/5 border border-yellow-500/20 rounded-xl p-8 text-center hover:border-yellow-500/40 transition-all"
               >
-                <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-poppins font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-white/60 font-poppins">{item.desc}</p>
+                <div className="text-5xl mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-poppins font-bold text-white mb-3">{feature.title}</h3>
+                <p className="text-white/60 font-poppins">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. LIVE OPPORTUNITIES */}
+      {/* 3. FEATURED PROJECTS */}
       <section ref={ref2} className="section-pad bg-[#070f22]">
         <div className="container-max">
           <motion.div
@@ -159,12 +143,12 @@ export default function RealEquityPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mb-4">Live Opportunities</h2>
-            <p className="text-white/60 text-lg font-poppins">Handpicked projects ready for investment</p>
+            <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mb-4">Featured Projects</h2>
+            <p className="text-white/60 text-lg font-poppins">Handpicked developments ready for investment</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {opportunities.map((opp, i) => (
+            {projects.map((project, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -172,36 +156,36 @@ export default function RealEquityPage() {
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className="glass rounded-xl p-8 border border-yellow-500/20 hover:border-yellow-500/40 transition-all"
               >
-                <h3 className="text-xl font-poppins font-bold text-white mb-2">{opp.name}</h3>
-                <p className="text-yellow-400 text-sm font-poppins mb-6 flex items-center gap-2">
-                  <MapPin size={14} /> {opp.location}
+                <h3 className="text-xl font-poppins font-bold text-white mb-2">{project.name}</h3>
+                <p className="text-yellow-400 text-sm font-poppins mb-4 flex items-center gap-2">
+                  <MapPin size={14} /> {project.location}
                 </p>
 
-                <div className="space-y-4 mb-6">
+                <div className="space-y-3 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-white/60 font-poppins">Min. Investment</span>
-                    <span className="text-yellow-400 font-bold font-poppins">{opp.minInvestment}</span>
+                    <span className="text-white/60 font-poppins">Type</span>
+                    <span className="text-yellow-400 font-bold font-poppins">{project.type}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-white/60 font-poppins">Expected Return</span>
-                    <span className="text-green-400 font-bold font-poppins">{opp.return}</span>
+                    <span className="text-white/60 font-poppins">Units</span>
+                    <span className="text-white font-bold font-poppins">{project.units}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-white/60 font-poppins">Hold Period</span>
-                    <span className="text-white font-bold font-poppins">{opp.period}</span>
+                    <span className="text-white/60 font-poppins">Price Range</span>
+                    <span className="text-green-400 font-bold font-poppins">{project.price}</span>
                   </div>
                 </div>
 
                 {/* Progress bar */}
                 <div className="mb-6">
                   <div className="flex justify-between text-xs mb-2">
-                    <span className="text-white/50 font-poppins">Project Progress</span>
-                    <span className="text-yellow-400 font-bold font-poppins">{opp.progress}%</span>
+                    <span className="text-white/50 font-poppins">Progress</span>
+                    <span className="text-yellow-400 font-bold font-poppins">{project.progress}%</span>
                   </div>
                   <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-yellow-500 to-yellow-400 rounded-full transition-all duration-500"
-                      style={{ width: `${opp.progress}%` }}
+                      style={{ width: `${project.progress}%` }}
                     />
                   </div>
                 </div>
@@ -259,7 +243,7 @@ export default function RealEquityPage() {
         </div>
       </section>
 
-      {/* 5. WHY PROEVERON */}
+      {/* 5. WHY CHOOSE US */}
       <section ref={ref4} className="section-pad bg-[#070f22]">
         <div className="container-max">
           <motion.div
@@ -268,12 +252,17 @@ export default function RealEquityPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mb-4">Why Invest with PROEVERON?</h2>
-            <p className="text-yellow-400 text-lg font-poppins">We don't just sell property. We structure investments.</p>
+            <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mb-4">Why Choose PROEVERON Realty?</h2>
+            <p className="text-yellow-400 text-lg font-poppins">30+ years of real estate excellence</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyProeveron.map((item, i) => (
+            {[
+              { title: '30+ Years', desc: 'Proven track record in real estate' },
+              { title: 'Prime Locations', desc: 'High-growth markets globally' },
+              { title: 'Transparent Execution', desc: 'Clear timelines & deliverables' },
+              { title: 'Investor-First', desc: 'Your interests always come first' },
+            ].map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -289,57 +278,19 @@ export default function RealEquityPage() {
         </div>
       </section>
 
-      {/* 6. RETURNS + TRANSPARENCY */}
+      {/* 6. MARKET PRESENCE */}
       <section ref={ref5} className="section-pad bg-[#0B1C3D]">
         <div className="container-max">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView5 ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mb-12 text-center">Returns + Transparency</h2>
-
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              {[
-                { title: 'Sample Investment Growth', value: '₹20L → ₹26L', period: 'in 15 months' },
-                { title: 'Rental Yield Example', value: '8–12%', period: 'annual returns' },
-                { title: 'Buyback Clarity', value: 'Guaranteed', period: 'exit option' },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView5 ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="glass rounded-xl p-8 text-center border border-yellow-500/20"
-                >
-                  <h3 className="text-white/60 text-sm font-poppins mb-3">{item.title}</h3>
-                  <div className="text-3xl font-poppins font-bold text-yellow-400 mb-2">{item.value}</div>
-                  <p className="text-white/50 text-sm font-poppins">{item.period}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <p className="text-xs text-white/40 text-center font-poppins bg-white/5 border border-white/10 rounded-lg p-4">
-              ⚠️ Disclaimer: These are illustrative examples. Actual returns may vary based on market conditions and project performance. Past performance is not indicative of future results.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 7. TRUST + SOCIAL PROOF */}
-      <section ref={ref6} className="section-pad bg-[#070f22]">
-        <div className="container-max">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView6 ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
             className="grid md:grid-cols-3 gap-12 text-center"
           >
             {[
-              { num: '100+', label: 'Active Investors' },
-              { num: '50+', label: 'Acres Managed' },
-              { num: '15+', label: 'Active Projects' },
+              { num: '50+', label: 'Projects Completed' },
+              { num: '10000+', label: 'Happy Residents' },
+              { num: '500+ Acres', label: 'Land Under Development' },
             ].map((item, i) => (
               <div key={i}>
                 <div className="text-5xl font-poppins font-bold text-yellow-400 mb-2">{item.num}</div>
@@ -350,32 +301,70 @@ export default function RealEquityPage() {
         </div>
       </section>
 
-      {/* 8. FAQ */}
+      {/* 7. INVESTMENT MODELS */}
+      <section ref={ref6} className="section-pad bg-[#070f22]">
+        <div className="container-max">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView6 ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mb-4">Investment Models</h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: 'Direct Ownership', desc: 'Own premium properties outright', icon: '🏠' },
+              { title: 'Fractional Ownership', desc: 'Invest with lower entry points', icon: '📊' },
+              { title: 'Development Rights', desc: 'Partner in project development', icon: '🏗️' },
+            ].map((model, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView6 ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="bg-white/5 border border-yellow-500/20 rounded-xl p-8 text-center hover:border-yellow-500/40 transition-all"
+              >
+                <div className="text-5xl mb-4">{model.icon}</div>
+                <h3 className="text-xl font-poppins font-bold text-white mb-3">{model.title}</h3>
+                <p className="text-white/60 font-poppins">{model.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. GLOBAL PRESENCE */}
       <section ref={ref7} className="section-pad bg-[#0B1C3D]">
-        <div className="container-max max-w-3xl">
+        <div className="container-max max-w-3xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView7 ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="space-y-8"
           >
-            <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white mb-4">Frequently Asked Questions</h2>
-          </motion.div>
+            <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white">
+              Global Real Estate Opportunities
+            </h2>
+            <p className="text-lg text-white/70 font-poppins">
+              From India to UAE to USA, PROEVERON Realty brings institutional-grade developments to investors worldwide.
+            </p>
 
-          <div className="space-y-6">
-            {faqs.map((faq, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView7 ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="bg-white/5 border border-yellow-500/20 rounded-xl p-6 hover:border-yellow-500/40 transition-all"
-              >
-                <h3 className="text-lg font-poppins font-bold text-white mb-3">{faq.q}</h3>
-                <p className="text-white/60 font-poppins">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
+            <div className="grid md:grid-cols-3 gap-6 my-12">
+              {[
+                { country: 'India', projects: '30+', icon: '🇮🇳' },
+                { country: 'UAE', projects: '15+', icon: '🇦🇪' },
+                { country: 'USA', projects: '10+', icon: '🇺🇸' },
+              ].map((region, i) => (
+                <div key={i} className="bg-white/5 border border-yellow-500/20 rounded-xl p-6">
+                  <div className="text-4xl mb-3">{region.icon}</div>
+                  <h3 className="text-lg font-poppins font-bold text-white mb-2">{region.country}</h3>
+                  <p className="text-yellow-400 font-bold font-poppins">{region.projects} Projects</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -389,7 +378,7 @@ export default function RealEquityPage() {
             className="space-y-8"
           >
             <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white">
-              Start Your Real Estate Investment Journey Today
+              Start Your Real Estate Journey with PROEVERON
             </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -400,7 +389,7 @@ export default function RealEquityPage() {
                 Explore Opportunities <ArrowRight size={20} />
               </Link>
               <button
-                onClick={() => openWhatsApp('Hi PROEVERON, I want to talk to an advisor about RealEquity')}
+                onClick={() => openWhatsApp('Hi PROEVERON, I want to explore PROEVERON Realty projects')}
                 className="px-8 py-4 border border-yellow-500 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-500/10 transition-all duration-300 flex items-center justify-center gap-2 text-base"
               >
                 <MessageCircle size={20} /> Talk to Advisor
@@ -409,7 +398,7 @@ export default function RealEquityPage() {
 
             {/* WhatsApp Quick Button */}
             <button
-              onClick={() => openWhatsApp('Hi PROEVERON, I want to know more about RealEquity')}
+              onClick={() => openWhatsApp('Hi PROEVERON, I want to know more about PROEVERON Realty')}
               className="inline-flex items-center gap-2 px-6 py-3 bg-green-500/20 border border-green-500/40 text-green-400 rounded-lg hover:bg-green-500/30 transition-all font-poppins text-sm"
             >
               <MessageCircle size={16} /> Quick WhatsApp Chat

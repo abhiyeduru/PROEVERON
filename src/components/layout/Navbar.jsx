@@ -11,10 +11,10 @@ const navLinks = [
   {
     label: 'Ecosystem', path: '#',
     children: [
-      { label: 'PROEVERON Realty', path: '/ecosystem/realty' },
+      { label: 'PROEVERON Realty', path: '/proeveron-realty' },
       { label: 'RealEquity', path: '/realequity' },
       { label: 'Axel Wellness', path: '/axel-wellness' },
-      { label: 'TeQZen AI', path: '/ecosystem/teqzen' },
+      { label: 'TeQZen AI', path: '/teqzen' },
     ]
   },
   { label: 'About', path: '/about' },

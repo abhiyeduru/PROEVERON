@@ -60,10 +60,12 @@ export default function EcosystemSection() {
         {/* Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {items.map((item, i) => {
+            const isProeveronRealty = item.title === 'PROEVERON REALTY';
             const isRealQuity = item.title === 'REALQUITY';
             const isAxelWellness = item.title === 'AXEL WELLNESS';
-            const CardComponent = (isRealQuity || isAxelWellness) ? Link : 'div';
-            const cardProps = isRealQuity ? { to: '/realequity' } : isAxelWellness ? { to: '/axel-wellness' } : {};
+            const isTeQZen = item.title === 'TEQZEN';
+            const CardComponent = (isProeveronRealty || isRealQuity || isAxelWellness || isTeQZen) ? Link : 'div';
+            const cardProps = isProeveronRealty ? { to: '/proeveron-realty' } : isRealQuity ? { to: '/realequity' } : isAxelWellness ? { to: '/axel-wellness' } : isTeQZen ? { to: '/teqzen' } : {};
 
             return (
               <motion.div

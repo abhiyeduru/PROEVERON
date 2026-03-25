@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Leaf, Zap, Home, Users, TrendingUp, MessageCircle, MapPin, Calendar } from 'lucide-react';
+import { openWhatsApp } from '../utils/whatsapp';
 
 export default function AxelWellnessPage() {
   const { ref: ref1, inView: inView1 } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -73,17 +74,17 @@ export default function AxelWellnessPage() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link
-                to="/axel-wellness/explore"
+                to="/projects"
                 className="px-8 py-4 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all duration-300 flex items-center justify-center gap-2 text-base shadow-lg hover:shadow-xl"
               >
                 Explore Wellness Living <ArrowRight size={20} />
               </Link>
-              <a
-                href="https://wa.me/919876543210?text=I%20want%20to%20book%20a%20visit%20for%20Axel%20Wellness"
+              <button
+                onClick={() => openWhatsApp('Hi PROEVERON, I want to book a visit for Axel Wellness')}
                 className="px-8 py-4 border-2 border-green-600 text-green-600 font-semibold rounded-full hover:bg-green-50 transition-all duration-300 flex items-center justify-center gap-2 text-base"
               >
                 <Calendar size={20} /> Book a Visit
-              </a>
+              </button>
             </div>
           </motion.div>
         </div>
@@ -395,26 +396,26 @@ export default function AxelWellnessPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/axel-wellness/explore"
+                to="/projects"
                 className="px-8 py-4 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all duration-300 flex items-center justify-center gap-2 text-base shadow-lg"
               >
                 Book a Site Visit <ArrowRight size={20} />
               </Link>
-              <a
-                href="https://wa.me/919876543210?text=Hi%20PROEVERON%2C%20I%20want%20to%20know%20more%20about%20Axel%20Wellness"
+              <button
+                onClick={() => openWhatsApp('Hi PROEVERON, I want to know more about Axel Wellness')}
                 className="px-8 py-4 border-2 border-green-600 text-green-600 font-semibold rounded-full hover:bg-green-50 transition-all duration-300 flex items-center justify-center gap-2 text-base"
               >
                 <MessageCircle size={20} /> Talk to Advisor
-              </a>
+              </button>
             </div>
 
             {/* WhatsApp Quick Button */}
-            <a
-              href="https://wa.me/919876543210?text=I%20want%20to%20learn%20more%20about%20Axel%20Wellness"
+            <button
+              onClick={() => openWhatsApp('I want to learn more about Axel Wellness')}
               className="inline-flex items-center gap-2 px-6 py-3 bg-green-100 border border-green-300 text-green-700 rounded-full hover:bg-green-200 transition-all font-poppins text-sm"
             >
               <MessageCircle size={16} /> Quick WhatsApp Chat
-            </a>
+            </button>
           </motion.div>
         </div>
       </section>
