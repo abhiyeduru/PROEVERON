@@ -4,9 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { db } from '../../firebase/config';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { Plus, Edit2, Trash2, X, Upload, Building2 } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
+import { hasPermission, PERMISSIONS } from '../../utils/permissions';
 
-const CLOUDINARY_UPLOAD_PRESET = 'proeveron_projects'; // Replace with your upload preset
-const CLOUDINARY_CLOUD_NAME = 'your_cloud_name'; // Replace with your Cloudinary cloud name
+const CLOUDINARY_UPLOAD_PRESET = 'cryptchat';
+const CLOUDINARY_CLOUD_NAME = 'dp8bfdbab';
+const CLOUDINARY_API_KEY = '337739287121541';
 
 const EMPTY_FORM = { title: '', location: '', price: '', roi: '', type: 'Residential', status: 'Active', tag: '', description: '', beds: '', area: '', image: '' };
 
@@ -21,6 +24,7 @@ const SAMPLE = [
 ];
 
 export default function AdminProjects() {
+  const { userRole } = useAuth();
   const [projects, setProjects] = useState(SAMPLE);
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -28,6 +32,22 @@ export default function AdminProjects() {
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(null);
+  const [error, setError] = useState(null);
+
+  // Check permissions
+  const canCreate = hasPermission(userRole, PERMISSIONS.CREATE_PROJECT);
+  const canEdit = hasPermission(userRole, PERMISSIONS.EDIT_PROJECT);
+  const canDelete = hasPermission(userRole, PERMISSIONS.DELETE_PROJECT);
+  const canView = hasPermission(userRole, PERMISSIONS.VIEW_PROJECTS);
+
+  if (!canView) {
+    return (
+      <div className="p-8 text-center">
+        <div className="text-red-400 text-lg">Access Denied</div>
+        <p className="text-white/50 mt-2">You don't have permission to view projects.</p>
+      </div>
+    );
+  }
 
   useEffect(() => {
     getDocs(collection(db, 'projects')).then((snap) => {
@@ -70,17 +90,25 @@ export default function AdminProjects() {
 
   const handleSave = async (e) => {
     e.preventDefault();
+    if (!canCreate && !canEdit) {
+      setError('You do not have permission to perform this action.');
+      return;
+    }
     setSaving(true);
+    setError(null);
     try {
       if (editId) {
+        if (!canEdit) throw new Error('You do not have permission to edit projects.');
         await updateDoc(doc(db, 'projects', editId), { ...form, updatedAt: serverTimestamp() });
         setProjects((prev) => prev.map((p) => p.id === editId ? { ...p, ...form } : p));
       } else {
+        if (!canCreate) throw new Error('You do not have permission to create projects.');
         const docRef = await addDoc(collection(db, 'projects'), { ...form, createdAt: serverTimestamp() });
         setProjects((prev) => [...prev, { id: docRef.id, ...form }]);
       }
       closeForm();
     } catch (err) {
+      setError(err.message || 'Failed to save project');
       // For demo, update locally only
       if (editId) {
         setProjects((prev) => prev.map((p) => p.id === editId ? { ...p, ...form } : p));
@@ -108,9 +136,11 @@ export default function AdminProjects() {
           <h1 className="font-cinzel font-bold text-3xl text-white">Projects</h1>
           <p className="text-white/40 text-sm mt-1">{projects.length} total projects</p>
         </div>
-        <button onClick={openAdd} className="btn-gold flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold">
-          <Plus size={16} /> Add Project
-        </button>
+        {canCreate && (
+          <button onClick={openAdd} className="btn-gold flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold">
+            <Plus size={16} /> Add Project
+          </button>
+        )}
       </div>
 
       {/* Projects grid */}
@@ -127,12 +157,16 @@ export default function AdminProjects() {
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-[#070f22] to-transparent" />
               <div className="absolute top-2 right-2 flex gap-2">
-                <button onClick={() => openEdit(project)} className="w-8 h-8 glass rounded-lg flex items-center justify-center text-white/60 hover:text-yellow-400 transition-colors">
-                  <Edit2 size={13} />
-                </button>
-                <button onClick={() => setDeleteConfirm(project.id)} className="w-8 h-8 glass rounded-lg flex items-center justify-center text-white/60 hover:text-red-400 transition-colors">
-                  <Trash2 size={13} />
-                </button>
+                {canEdit && (
+                  <button onClick={() => openEdit(project)} className="w-8 h-8 glass rounded-lg flex items-center justify-center text-white/60 hover:text-yellow-400 transition-colors">
+                    <Edit2 size={13} />
+                  </button>
+                )}
+                {canDelete && (
+                  <button onClick={() => setDeleteConfirm(project.id)} className="w-8 h-8 glass rounded-lg flex items-center justify-center text-white/60 hover:text-red-400 transition-colors">
+                    <Trash2 size={13} />
+                  </button>
+                )}
               </div>
               <span className={`absolute bottom-2 left-2 text-[9px] px-2 py-0.5 rounded-full font-bold border ${project.status === 'Active' ? 'text-green-400 border-green-500/30 bg-green-500/10' : 'text-yellow-400 border-yellow-500/30 bg-yellow-500/10'}`}>
                 {project.status}
