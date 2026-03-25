@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AdminSignupPage from './pages/AdminSignupPage';
 import RealEquityPage from './pages/RealEquityPage';
+import AxelWellnessPage from './pages/AxelWellnessPage';
 import ProjectsPage from './pages/ProjectsPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import DashboardPage from './pages/DashboardPage';
@@ -67,6 +68,7 @@ function AppRoutes() {
       {/* Public + Protected pages (with navbar/footer) */}
       <Route path="/" element={<><Navbar /><HomePage /><Footer /><WhatsAppButton /></>} />
       <Route path="/realequity" element={<><Navbar /><RealEquityPage /><Footer /><WhatsAppButton /></>} />
+      <Route path="/axel-wellness" element={<><Navbar /><AxelWellnessPage /><Footer /><WhatsAppButton /></>} />
       <Route path="/projects" element={<><Navbar /><ProjectsPage /><Footer /><WhatsAppButton /></>} />
       <Route path="/projects/:id" element={<><Navbar /><ProjectDetailPage /><Footer /><WhatsAppButton /></>} />
       <Route path="/dashboard" element={<><Navbar /><DashboardPage /><Footer /><WhatsAppButton /></>} />

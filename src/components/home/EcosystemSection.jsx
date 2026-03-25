@@ -61,8 +61,9 @@ export default function EcosystemSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {items.map((item, i) => {
             const isRealQuity = item.title === 'REALQUITY';
-            const CardComponent = isRealQuity ? Link : 'div';
-            const cardProps = isRealQuity ? { to: '/realequity' } : {};
+            const isAxelWellness = item.title === 'AXEL WELLNESS';
+            const CardComponent = (isRealQuity || isAxelWellness) ? Link : 'div';
+            const cardProps = isRealQuity ? { to: '/realequity' } : isAxelWellness ? { to: '/axel-wellness' } : {};
 
             return (
               <motion.div

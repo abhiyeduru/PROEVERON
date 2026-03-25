@@ -13,7 +13,7 @@ const navLinks = [
     children: [
       { label: 'PROEVERON Realty', path: '/ecosystem/realty' },
       { label: 'RealEquity', path: '/realequity' },
-      { label: 'Axel Wellness', path: '/ecosystem/wellness' },
+      { label: 'Axel Wellness', path: '/axel-wellness' },
       { label: 'TeQZen AI', path: '/ecosystem/teqzen' },
     ]
   },
