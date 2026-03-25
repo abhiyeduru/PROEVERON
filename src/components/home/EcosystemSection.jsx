@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useContent } from '../../context/ContentContext';
 
 export default function EcosystemSection() {
@@ -58,24 +59,32 @@ export default function EcosystemSection() {
 
         {/* Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {items.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group bg-white/5 border border-yellow-500/20 rounded-xl p-6 hover:border-yellow-500/60 hover:bg-white/10 transition-all duration-300 cursor-pointer h-full flex flex-col"
-            >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
-              <h3 className="text-lg font-poppins font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">
-                {item.title}
-              </h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-4 flex-grow font-poppins">{item.desc}</p>
-              <div className="flex items-center gap-2 text-yellow-400/60 group-hover:text-yellow-400 transition-colors text-sm font-medium font-poppins">
-                {item.cta || 'Learn More →'}
-              </div>
-            </motion.div>
-          ))}
+          {items.map((item, i) => {
+            const isRealQuity = item.title === 'REALQUITY';
+            const CardComponent = isRealQuity ? Link : 'div';
+            const cardProps = isRealQuity ? { to: '/realequity' } : {};
+
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="group bg-white/5 border border-yellow-500/20 rounded-xl p-6 hover:border-yellow-500/60 hover:bg-white/10 transition-all duration-300 cursor-pointer h-full flex flex-col"
+                as={CardComponent}
+                {...cardProps}
+              >
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
+                <h3 className="text-lg font-poppins font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed mb-4 flex-grow font-poppins">{item.desc}</p>
+                <div className="flex items-center gap-2 text-yellow-400/60 group-hover:text-yellow-400 transition-colors text-sm font-medium font-poppins">
+                  {item.cta || 'Learn More →'}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Closing Statement */}
