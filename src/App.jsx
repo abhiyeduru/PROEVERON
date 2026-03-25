@@ -12,6 +12,7 @@ import WhatsAppButton from './components/layout/WhatsAppButton';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import AdminSignupPage from './pages/AdminSignupPage';
 import ProjectsPage from './pages/ProjectsPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import DashboardPage from './pages/DashboardPage';
@@ -28,7 +29,7 @@ import AdminCMS from './pages/admin/AdminCMS';
 import AdminSettings from './pages/admin/AdminSettings';
 
 // Pages that use their own Navbar/Footer
-const STANDALONE_ROUTES = ['/login', '/register', '/admin'];
+const STANDALONE_ROUTES = ['/login', '/register', '/admin', '/admin-signup'];
 
 function MainLayout({ children, pathname }) {
   const isStandalone = STANDALONE_ROUTES.some((r) => pathname.startsWith(r));
@@ -48,6 +49,7 @@ function AppRoutes() {
       {/* Auth pages (no navbar/footer) */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/admin-signup" element={<AdminSignupPage />} />
 
       {/* Admin panel */}
       <Route path="/admin" element={<AdminLayout />}>
